@@ -34,7 +34,7 @@ void setup() {
     esp8266.begin(serialCommunicationSpeed);
     InitWifiModule();
 
-//    dht.begin();
+    dht.begin();
 
     digitalWrite(greenLED, LOW);
 }
@@ -48,12 +48,9 @@ void loop() {
     Serial.println("fan low");
     delay(4000);
 
-// Gas Leak Detector
-    float sensorVoltage; 
-    float sensorValue;
-   
-    sensorValue = analogRead(A0);
-    sensorVoltage = sensorValue/1024*5.0;
+// Gas Leak Detector   
+    float sensorValue = analogRead(A0);
+    float sensorVoltage = sensorValue/1024*5.0;
    
     Serial.print("sensor voltage = ");
     Serial.print(sensorVoltage);
