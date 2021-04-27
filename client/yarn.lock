@@ -8387,6 +8387,11 @@
   "resolved" "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"
   "version" "2.1.0"
 
+"pi-camera-connect@^0.3.4":
+  "integrity" "sha512-0mVOJXYY8CvAuswWXs3OnL2+pOczjuLGHca+Q479mbOC+eS6wjMameTA66B0q5KVtTAB6YplS7/Q4rieojGEVg=="
+  "resolved" "https://registry.npmjs.org/pi-camera-connect/-/pi-camera-connect-0.3.4.tgz"
+  "version" "0.3.4"
+
 "picomatch@^2.0.4", "picomatch@^2.0.5", "picomatch@^2.2.1", "picomatch@^2.2.2":
   "integrity" "sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg=="
   "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-2.2.2.tgz"

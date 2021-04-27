@@ -21,9 +21,12 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 //import Chart from './Chart';
 
+import { StillCamera } from "pi-camera-connect";
+import * as fs from "fs";
+
 import SearchByIng from "./SearchByIng";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Card } from "@material-ui/core";
+import { Button, Card } from "@material-ui/core";
 
 function Copyright() {
   return (
@@ -139,6 +142,15 @@ export default function Dashboard() {
 
   callAPI();
 
+  // Take still image and save to disk
+  const runSnapApp = async () => {
+    const stillCamera = new StillCamera();
+
+    const image = await stillCamera.takeImage();
+
+    fs.writeFileSync("still-image" + Date.now() + ".jpg", image);
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -195,6 +207,7 @@ export default function Dashboard() {
                 <Paper className={classes.paper}>
                   <Route path={"/search"} exact component={SearchByIng} />
                   <Route path={"/card"} exact component={Card} />
+                  <Button onClick={runSnapApp}>Scan Item</Button>
                 </Paper>
               </Grid>
             </Grid>
