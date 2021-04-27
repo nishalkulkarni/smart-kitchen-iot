@@ -3,13 +3,14 @@ var express = require("express");
 var router = express.Router();
 
 router.post("/", function (req, res, next) {
-  var { temperature, humidity, heatindex } = req.body;
+  var { gasvolt, temperature, humidity, heatindex } = req.body;
   // {
   //   "temperature": 24.9,
   //   "humidity": 56.2,
   //   "heatindex": 12.5
   // }
   var dataValid =
+    typeof gasvolt == "number" &&
     typeof heatindex == "number" &&
     typeof temperature == "number" &&
     typeof humidity == "number";
