@@ -23,10 +23,17 @@ import { mainListItems, secondaryListItems } from "./listItems";
 
 import { StillCamera } from "pi-camera-connect";
 import * as fs from "fs";
-
-import SearchByIng from "./SearchByIng";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Button, Card } from "@material-ui/core";
+
+import HomePage from './Home'
+import SearchByIng from './SearchByIng';
+import Inventory from './Inventory';
+
+import BGdoodles from '../assets/bg-doodles.png';
+
+
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 
 function Copyright() {
   return (
@@ -204,9 +211,12 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
-                  <Route path={"/search"} exact component={SearchByIng} />
-                  <Route path={"/card"} exact component={Card} />
+                <Paper className={classes.paper} style={{ backgroundImage: `url(${BGdoodles})`,backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
+                  <Route path={"/"} exact component={HomePage}/>
+                  <Route path={"/search"} exact component={SearchByIng}/>
+                  <Route path={"/inventory"} exact component={Inventory}/>
+
+                  
                   <Button onClick={runSnapApp}>Scan Item</Button>
                 </Paper>
               </Grid>

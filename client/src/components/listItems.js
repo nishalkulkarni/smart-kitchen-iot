@@ -1,16 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom'
 
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import SearchIcon from '@material-ui/icons/Search';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+
+
 
 export const mainListItems = (
-  <div>
+  <div >
     <Link to="/">
       <ListItem button>
         <ListItemIcon>
@@ -20,22 +22,25 @@ export const mainListItems = (
       </ListItem>
     </Link>
 
-    <Link to="/search">
+    <Link to="/inventory">
       <ListItem button>
         <ListItemIcon>
-          <ShoppingCartIcon />
+          <AllInboxIcon />
         </ListItemIcon>
-        <ListItemText primary="Search By Ingredient" />
+        <ListItemText primary="Inventory" />
       </ListItem>
     </Link>
 
-    <Link to="/card">
+    
+    <Link to="/search">
       <ListItem button>
         <ListItemIcon>
-          <PeopleIcon />
+          <SearchIcon />
         </ListItemIcon>
-        <ListItemText primary="Customers" />
+        <ListItemText primary="Search For Recipes" />
       </ListItem>
     </Link>
+    
   </div>
 );
+
