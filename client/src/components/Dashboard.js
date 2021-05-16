@@ -21,7 +21,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 //import Chart from './Chart';
 
-import { StillCamera } from "pi-camera-connect";
+// import { StillCamera } from "pi-camera-connect";
 import * as fs from "fs";
 import { Button, Card } from "@material-ui/core";
 
@@ -150,13 +150,13 @@ export default function Dashboard() {
   callAPI();
 
   // Take still image and save to disk
-  const runSnapApp = async () => {
-    const stillCamera = new StillCamera();
+  // const runSnapApp = async () => {
+  //   const stillCamera = new StillCamera();
 
-    const image = await stillCamera.takeImage();
+  //   const image = await stillCamera.takeImage();
 
-    fs.writeFileSync("still-image" + Date.now() + ".jpg", image);
-  };
+  //   fs.writeFileSync("still-image" + Date.now() + ".jpg", image);
+  // };
 
   return (
     <div className={classes.root}>
@@ -211,13 +211,13 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Paper className={classes.paper} style={{ backgroundImage: `url(${BGdoodles})`,backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
+                <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
                   <Route path={"/"} exact component={HomePage}/>
                   <Route path={"/search"} exact component={SearchByIng}/>
                   <Route path={"/inventory"} exact component={Inventory}/>
 
                   
-                  <Button onClick={runSnapApp}>Scan Item</Button>
+                  {/* <Button onClick={runSnapApp}>Scan Item</Button> */}
                 </Paper>
               </Grid>
             </Grid>
