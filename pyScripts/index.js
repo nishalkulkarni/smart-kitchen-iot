@@ -1,43 +1,31 @@
-const express = require("express");
-const { spawn } = require("child_process");
+import express from "express";
 const app = express();
 const port = 3253;
-const PiCamera = require("pi-camera");
+import {StillCamera} from  "pi-camera-connect";
+import * as fs from "fs";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const runApp = async () => {
+	var dt = new Date();
+	var fname = __dirname +"/"+ dt.getDate() +""+(dt.getMonth()+1)+""+dt.getFullYear()+""+dt.getHours()+":"
+		+dt.getMinutes()+":"+dt.getSeconds()+ ".jpg";
+	console.log(fname);
+
+	const stillCamera = new StillCamera({
+		delay: 1000,
+	});
+	const image = await stillCamera.takeImage();
+
+	fs.writeFileSync(fname, image);
+};
 
 app.get("/", (req, res) => {
-  // var dataToSend;
-  // // spawn new child process to call the python script
-  // const python = spawn("python", ["fb-photo.py"]);
-  // // collect data from script
-  // python.stdout.on("data", function (data) {
-  //   console.log("Pipe data from python script ...");
-  //   dataToSend = data.toString();
-  // });
-  // // in close event we are sure that stream from child process is closed
-  // python.on("close", (code) => {
-  //   console.log(`child process close all stdio with code ${code}`);
-  //   // send data to browser
-  //   res.send(dataToSend);
-  // });
-
-  var dt = new Date().toLocaleString();
-  var fname = dt + ".jpg";
-
-  const myCamera = new PiCamera({
-    mode: "photo",
-    output: `${__dirname}/${fname}`,
-    width: 1280,
-    height: 720,
-    nopreview: true,
-  });
-
-  myCamera
-    .snap()
-    .then((result) => {
-      console.log(`<img src="${result}">`);
-    })
-    .catch((error) => {
-      console.log("Error: Cant take photo.");
-    });
+	//   res.send(dataToSend);
+	runApp();
 });
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
