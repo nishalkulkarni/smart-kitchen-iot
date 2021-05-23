@@ -37,8 +37,8 @@ while True:
             name = dt+".jpg"
             camera.capture(name)
             print(name+" saved")
-            name = storage.child(name).put(name)
-            print("Image sent",name)
+            storage.child(name).put(name)
+            print("Image sent")
             os.remove(name)
             print("File Removed")
             sleep(2)
