@@ -6,7 +6,7 @@ import * as fs from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import firebase from 'firebase';
-import 'firebase/storage';
+import '@firebase/storage';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBfLfJ3i37XQtRMF1rfh6rtvSRW_RfakIk",
@@ -41,8 +41,8 @@ const runApp = async () => {
 
 	fs.writeFileSync(fname, image);
   var imageRef = storageRef.child(fname);
-  const fileToUpload = fs.readFileSync(fname).toString('base64');
-  imageRef.putString(fileToUpload,'base64')
+  const fileToUpload = fs.readFileSync(fname);
+  imageRef.putString(fileToUpload)
 };
 
 app.get("/", (req, res) => {
