@@ -11,6 +11,7 @@ export default function Inventory(props) {
             <div style={{boxShadow:'5px', border:'2px solid black'}}>
             </div>
             <div className="dash-div">
+                <DashCard route="/search" title="Take Photo"/>
                 <DashCard route="/inventory" title="Inventory"/>
                 <DashCard route="/search" title="Look for Recipes"/>
             </div>
