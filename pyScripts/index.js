@@ -42,7 +42,10 @@ const runApp = async () => {
 	fs.writeFileSync(fname, image);
   var imageRef = storageRef.child(fname);
   const fileToUpload = fs.readFileSync(fname);
-  imageRef.putString(fileToUpload)
+  const metadata = { contentType: 'image/jpeg; charset=utf-8' }
+  imageRef.put(fileToUpload,metadata).then((snapshot) => {
+    console.log('Uploaded an array!', snapshot)
+  })
 };
 
 app.get("/", (req, res) => {
