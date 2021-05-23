@@ -24,10 +24,6 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 
 storage = firebase.storage()
 
-
-camera = PiCamera()
-camera.resolution = (1280, 720)
-
 while True:
     try:
         if GPIO.input(10) == GPIO.HIGH:
@@ -35,7 +31,10 @@ while True:
             now = datetime.now()
             dt = now.strftime("%d%m%Y%H:%M:%S")
             name = dt+".jpg"
+            camera = PiCamera()
+            camera.resolution = (1280, 720)
             camera.capture(name)
+            camera.close()
             print(name+" saved")
             storage.child(name).put(name)
             print("Image sent")
@@ -45,4 +44,4 @@ while True:
 
     except:
         print("Error, Quiting.")
-        camera.close()
+        

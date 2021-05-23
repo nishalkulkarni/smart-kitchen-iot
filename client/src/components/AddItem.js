@@ -3,15 +3,13 @@ import RecipeCard from "./RecipeCard";
 import { motion } from "framer-motion";
 import Grid from "@material-ui/core/Grid";
 import { projectFirestore } from "../firebase/config";
-const PiCamera = require('pi-camera');
 
 export default function AddItem(props) {
   const [recipeSource, setRecipeSource] = useState([{}]);
   const [inputIngredientName, setInputIngredientName] = useState("");
   const [inputIngredientUnit, setInputIngredientUnit] = useState("mg");
   const [inputIngredientQuantity, setInputIngredientQuantity] = useState(1);
-  const [ingred, setIngred] = useState([]);
-  const [recipeData, setRecipeData] = useState(null);
+  const [inputIngredientImg, setInputIngredientImg] = useState("#");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +19,7 @@ export default function AddItem(props) {
         name: inputIngredientName,
         unit: inputIngredientUnit,
         value: inputIngredientQuantity,
-        image: "#",
+        image: inputIngredientImg,
       },
     });
     // setInputIngredientName("");
@@ -41,34 +39,22 @@ export default function AddItem(props) {
 
   const takeIngredientPhoto = (e) => {
     e.preventDefault();
-    var dataToSend;
 
-    var dt = new Date().toLocaleString();
-    var fname = dt+".jpg";
-
-    const myCamera = new PiCamera({
-      mode: 'photo',
-      output: `${ __dirname }/${fname}`,
-      width: 1280,
-      height: 720,
-      nopreview: true,
-    });
-
-    myCamera.snap()
-      .then((result) => {
-        console.log(`<img src="${result}">`);
-      })
-      .catch((error) => {
-        console.log("Error: Cant take photo.")
-      })
-
+    fetch("http://192.168.0.105:3253/", {
+      mode: "cors",
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+        setInputIngredientImg(data);
+      });
     // setIngred((arr) => [...arr, inputIngredientName]);
   };
 
   const removeIngred = (e, ingredient) => {
     e.preventDefault();
 
-    setIngred((arr) => arr.splice(arr.indexOf(ingredient), 1));
+    // setIngred((arr) => arr.splice(arr.indexOf(ingredient), 1));
   };
 
   const ingredientCard = {
@@ -147,49 +133,9 @@ export default function AddItem(props) {
             Add
           </button>
         </form>
-        <div className="ingredients-div">
-          <h2 className="sbi-header">Photo:</h2>
-          {ingred &&
-            ingred.map((ingredient) => {
-              return (
-                <div style={ingredientCard}>
-                  {ingredient}
-                  <button
-                    onClick={(e) => removeIngred(e, ingredient)}
-                    style={removeButton}
-                  >
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="white"
-                        d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"
-                      />
-                    </svg>{" "}
-                  </button>
-                </div>
-              );
-            })}
-        </div>
-        <motion.div layout className="recipe-cards-div">
-          {recipeData &&
-            recipeData.map((recipe) => {
-              return (
-                <RecipeCard
-                  key={recipe.id}
-                  id={recipe.id}
-                  title={recipe.title}
-                  imageURL={recipe.image}
-                  recipe={recipe}
-                  missedIngredients={recipe.missedIngredients}
-                />
-              );
-            })}
-        </motion.div>
+        
+        <h2 className="sbi-header">Photo</h2>
+        <img src={inputIngredientImg} alt="item photo" width="640" height="480"/>
       </div>
     </Grid>
   );
