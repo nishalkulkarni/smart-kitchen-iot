@@ -30,7 +30,7 @@ admin.initializeApp({
   storageBucket: "gs://smart-kitchen-2100c.appspot.com",
 });
 
-app.locals.bucket = admin.storage().bucket();
+const bucket = admin.storage().bucket();
 
 const runApp = async () => {
   var dt = new Date();
@@ -57,7 +57,7 @@ const runApp = async () => {
   const image = await stillCamera.takeImage();
 
   fs.writeFileSync(fname, image);
-  await app.locals.bucket.file(fname).createWriteStream().end(req.file.buffer)
+  bucket.upload(fname);
 };
 
 app.get("/", (req, res) => {
