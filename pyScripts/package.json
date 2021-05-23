@@ -14,6 +14,7 @@
     "firebase": "^8.6.2",
     "firebase-admin": "^9.8.0",
     "pi-camera": "^1.5.0",
-    "pi-camera-connect": "^0.3.4"
+    "pi-camera-connect": "^0.3.4",
+    "uuidv4": "^6.2.8"
   }
 }
