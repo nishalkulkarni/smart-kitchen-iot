@@ -6,6 +6,7 @@ import * as fs from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import firebase from 'firebase';
+import 'firebase/storage';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBfLfJ3i37XQtRMF1rfh6rtvSRW_RfakIk",
