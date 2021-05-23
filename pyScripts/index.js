@@ -63,12 +63,12 @@ const runApp = async () => {
   const image = await stillCamera.takeImage();
 
   fs.writeFileSync(fname, image);
-  const uuid = uuidv4();
+  const uuidCalc = uuid();
   return bucket
     .upload(fname, {
       metadata: {
         metadata: {
-          firebaseStorageDownloadTokens: uuid,
+          firebaseStorageDownloadTokens: uuidCalc,
         },
       },
     })
@@ -80,7 +80,7 @@ const runApp = async () => {
           "/o/" +
           encodeURIComponent(file.name) +
           "?alt=media&token=" +
-          uuid
+          uuidCalc
       );
     });
 };
@@ -89,6 +89,7 @@ app.get("/", (req, res) => {
   //   res.send(dataToSend);
   runApp().then((downloadURL) => {
     console.log(downloadURL);
+	res.send(downloadURL);
   });
 });
 
