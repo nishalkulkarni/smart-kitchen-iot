@@ -26,6 +26,7 @@ import * as fs from "fs";
 import { Button, Card } from "@material-ui/core";
 
 import HomePage from './Home'
+import AddItem from './AddItem';
 import SearchByIng from './SearchByIng';
 import Inventory from './Inventory';
 
@@ -213,6 +214,7 @@ export default function Dashboard() {
               <Grid item xs={12}>
                 <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
                   <Route path={"/"} exact component={HomePage}/>
+                  <Route path={"/additem"} exact component={AddItem}/>
                   <Route path={"/search"} exact component={SearchByIng}/>
                   <Route path={"/inventory"} exact component={Inventory}/>
 

@@ -42,18 +42,12 @@ export default function SearchByIng(props) {
             if(!data)
                 alert('Sorry, could not find any matches')
             setRecipeData(data);
-            
-            
-            
-           
+                      
         })
         .catch((e)=>{
             console.log(e);
         }
         )
-
-        
-        
         
     }
     const handleSubmit = e => {
@@ -85,7 +79,6 @@ export default function SearchByIng(props) {
         
     }
 
-    
     const ingredientCard = {
 
         display : 'flex' ,
@@ -120,7 +113,9 @@ export default function SearchByIng(props) {
                 <input id="inputIngredient" type="text" value={searchTerm} placeholder="Apples!" onChange={handleChange}></input>
                 
                 <button type="submit" onClick={addIngredient} className="button-default">Add</button>
+                <br /><br />
                 <button onClick={handleSubmit} className="button-default">Search</button>
+                <br /><br />
                 <label className="sbi-label">Number of Recipes : </label>
                 <input id="inputQuantity" type="number" name="quantity" min="1" max="6" onChange={changeQuantity}></input>
                 

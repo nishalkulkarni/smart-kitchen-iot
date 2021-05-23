@@ -46,7 +46,3 @@ while True:
     except:
         print("Error, Quiting.")
         camera.close()
-
-for i in range(5):
-    camera.capture('/home/pi/Desktop/smart-kitchen-iot/client/image%s.jpg' % i)
-    sleep(2)

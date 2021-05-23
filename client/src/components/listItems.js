@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SearchIcon from '@material-ui/icons/Search';
+import AddItemIcon from '@material-ui/icons/Add';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
 
 
@@ -38,6 +39,15 @@ export const mainListItems = (
           <SearchIcon />
         </ListItemIcon>
         <ListItemText primary="Search For Recipes" />
+      </ListItem>
+    </Link>
+
+    <Link to="/additem">
+      <ListItem button>
+        <ListItemIcon>
+          <AddItemIcon />
+        </ListItemIcon>
+        <ListItemText primary="Add Item to Inventory" />
       </ListItem>
     </Link>
     
