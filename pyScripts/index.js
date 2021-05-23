@@ -5,6 +5,24 @@ import {StillCamera} from  "pi-camera-connect";
 import * as fs from "fs";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import firebase from 'firebase';
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBfLfJ3i37XQtRMF1rfh6rtvSRW_RfakIk",
+  authDomain: "smart-kitchen-2100c.firebaseapp.com",
+  databaseURL: "https://smart-kitchen-2100c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "smart-kitchen-2100c",
+  storageBucket: "smart-kitchen-2100c.appspot.com",
+  messagingSenderId: "155436361699",
+  appId: "1:155436361699:web:c01201c83ce4b568ec22d6",
+  measurementId: "G-2RR1Z9N3KR"
+}
+
+firebase.initializeApp(firebaseConfig);
+
+var storage = firebase.storage();
+var storageRef = firebase.storage().ref();
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,6 +39,9 @@ const runApp = async () => {
 	const image = await stillCamera.takeImage();
 
 	fs.writeFileSync(fname, image);
+  var imageRef = storageRef.child(fname);
+  const fileToUpload = fs.readFileSync(fname).toString('base64');
+  imageRef.putString(fileToUpload,'base64')
 };
 
 app.get("/", (req, res) => {
