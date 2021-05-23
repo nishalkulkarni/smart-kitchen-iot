@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "firebase": "^8.6.2",
+    "firebase-admin": "^9.8.0",
     "pi-camera": "^1.5.0",
     "pi-camera-connect": "^0.3.4"
   }
