@@ -33,7 +33,9 @@ while True:
             name = dt+".jpg"
             camera = PiCamera()
             camera.resolution = (1280, 720)
+            sleep(2)
             camera.capture(name)
+            sleep(2)
             camera.close()
             print(name+" saved")
             storage.child(name).put(name)
