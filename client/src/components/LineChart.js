@@ -22,7 +22,7 @@ export default function LineChart({dataX,dataY,label,width = "100%",colorHex = "
       const options = {
         scales: {
           x : {
-            display : true,
+            display : false,
             title : {
               display : true,
               text : 'Time'

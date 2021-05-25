@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import useDatabase from '../hooks/useDatabase';
 
-export default function HomeGraphConstants() {
-    const { gasVoltList, tempList , heatIndex, humidity} = useDatabase("sensor/data");
-    const joke = 11;
-}
-
+// const [value1,setValue1] = useState(heatIndex[hIMainIndex]);
+// const [value2,setValue2] = useState(humidity[humidityMainIndex]);
+// const [value3,setValue3] = useState(gasVoltList[gasVoltMainIndex]);
+// const [value4,setValue4] = useState(tempList[tempMainIndex]);
 
 //Defines the Colors and Labels of each status    
 export const statusValues = {
@@ -17,7 +16,7 @@ colors : {
     labels : {
         good: 'Good',
         average: 'Average',
-        poor: 'Poor',
+        poor: 'Alert',
     }
 }
 
@@ -25,8 +24,8 @@ colors : {
 export const readingRanges = { 
 heatIndex : {
     max : 35.7,
-    mid : 33.3,
-    min : 31.3,
+    mid : 32.8,
+    min : 30.9,
 },
 humidity : {
     max : 54.0,
@@ -34,12 +33,12 @@ humidity : {
     min : 53.0,
 },
 gasVolt :{
-    max : 2.52,
+    max : 2.50,
     mid : 2.19,
     min : 1.92,
 },
 temperature : {
-    max : 34.7,
+    max : 45.7,
     mid : 32.5,
     min : 30.2,
 }
@@ -66,19 +65,19 @@ if(value >= ranges.max){
     if(isGradient)
         return "var(--red-gradient)";
     else 
-        return "var(--theme-red)";
+        return statusValues.colors.poor;
 }
 else if(value < ranges.max && value >=ranges.mid){
     if(isGradient)
         return "var(--orange-gradient)";
     else
-        return "var(--theme-orange)";
+        return statusValues.colors.average;
 }
 else{
     if(isGradient)
         return "var(--green-gradient)";
     else
-        return "var(--theme-green)";
+        return statusValues.colors.good;
 }
 }
 

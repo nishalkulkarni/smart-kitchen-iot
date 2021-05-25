@@ -11,17 +11,11 @@ import {animate, motion} from 'framer-motion';
 
 //Components
 import LineChart from './LineChart';
-import Plot from 'react-plotly.js';
-import ToolTip from '@material-ui/core/Tooltip'
-import ReactCardFlip from 'react-card-flip';
-import GaugeChart from 'react-gauge-chart'
-import { CircularProgressbar, buildStyles  } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 
 //Custom made
 import DashCard from './DashCard';
 import useDatabase from '../hooks/useDatabase';
-import * as HomeConstants from '../constants/HomeGraphConstants';
+import * as HomeConstants from '../constants/HomeConstants';
 
 import Paper from "@material-ui/core/Paper";
 import useMaterialStyles from '../hooks/useMaterialStyles';
@@ -32,36 +26,53 @@ import HumidityBar from './HumidityBar';
 export default function Home(props) {
     const { gasVoltList, tempList , heatIndex, humidity} = useDatabase("sensor/data");
     const { classes } = useMaterialStyles();
-    const [isFlipped,setIsFlipped] = useState(false);
-    
-    
-    
 
+   
 
+    ////Control Area
+    //Defines the size of the graph by splicing the input array. For ex. -50 indicates taking the latest 50 values
+    const noOfPointsInGraph = -50;
+
+    // Defines which entry of the readings list we consider the main, ex. for calcStatus 
+    let hIMainIndex = (heatIndex.length) - 1;
+    let humidityMainIndex = (humidity.length) - 1;
+    let gasVoltMainIndex = (gasVoltList.length) - 1;
+    let tempMainIndex = (tempList.length) -1;
+
+    // const [value1,setValue1] = useState(heatIndex[hIMainIndex]);
+    // const [value2,setValue2] = useState(humidity[humidityMainIndex]);
+    // const [value3,setValue3] = useState(gasVoltList[gasVoltMainIndex]);
+    // const [value4,setValue4] = useState(tempList[tempMainIndex]);
+    ////
+    
     const statusRows = [
         {
             name:<label className={'sbi-label'}>Heat Index</label>,
-            status: HomeConstants.calcStatus({value: heatIndex[0], ranges: HomeConstants.readingRanges.heatIndex}),
+            status: HomeConstants.calcStatus({value: heatIndex[hIMainIndex], ranges: HomeConstants.readingRanges.heatIndex}),
         },
         {
             name:<label className={'sbi-label'}>Humidity</label>,
-            status: HomeConstants.calcHumidityStatus({value: humidity[0], ranges: HomeConstants.readingRanges.humidity}),
+            status: HomeConstants.calcHumidityStatus({value: humidity[humidityMainIndex], ranges: HomeConstants.readingRanges.humidity}),
         },
         {
             name:<label className={'sbi-label'}>Gas Volt</label>,
-            status: HomeConstants.calcStatus({value: gasVoltList[0], ranges: HomeConstants.readingRanges.gasVolt}),
+            status: HomeConstants.calcStatus({value: gasVoltList[gasVoltMainIndex], ranges: HomeConstants.readingRanges.gasVolt}),
         },
         {
             name:<label className={'sbi-label'}>Temperature</label>,
-            status: HomeConstants.calcStatus({value: tempList[0], ranges: HomeConstants.readingRanges.temperature}),
+            status: HomeConstants.calcStatus({value: tempList[tempMainIndex], ranges: HomeConstants.readingRanges.temperature}),
         },
     ]
     
     
     //Used as a placeholder for time intervals in charts
     let timeLabels = [];
-    for (let i = 0; i < gasVoltList.length; i++) {
-        timeLabels.push(i);
+    for (let i = 0; i < Math.abs(noOfPointsInGraph); i++) {
+        let seconds = i*4;
+        let minutes = Math.floor(seconds / 60);
+        let left_secs = seconds - minutes * 60
+        timeLabels.push(seconds);
+        
     }
     //
 
@@ -91,7 +102,7 @@ export default function Home(props) {
                 
 
                 <Paper className={classes.paper} style={{width:'30%',minWidth:'300px'}}>
-                    <HeatIndexGauge heatIndex={heatIndex}/>
+                    <HeatIndexGauge heatIndex={heatIndex} mainIndex={hIMainIndex} value={heatIndex[hIMainIndex]}/>
                 </Paper>
 
                 <Paper className={classes.paper} style={{width:'30%',minWidth:'300px'}}>
@@ -110,7 +121,7 @@ export default function Home(props) {
                 </Paper>
 
                 <Paper className={classes.paper} style={{width:'30%',minWidth:'300px'}}>
-                    <HumidityBar humidity={humidity}/>
+                    <HumidityBar humidity={humidity} mainIndex={humidityMainIndex} value={humidity[humidityMainIndex]}/>
                 </Paper>
             </div>
 
@@ -124,63 +135,16 @@ export default function Home(props) {
             <div style={{display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between'}}>
             <Paper className={classes.paper} style={{width:'45%',minWidth:'500px'}}>
                 <div className="dash-graphs-div">
-                    <LineChart dataX={timeLabels} dataY={gasVoltList} label={'Gas Volt (V)'} width="100%" />
+                    <LineChart dataX={timeLabels} dataY={gasVoltList.slice(noOfPointsInGraph)} label={'Gas Volt (V)'} width="100%" colorHex={HomeConstants.calcStatusColor({value:gasVoltList[gasVoltMainIndex],ranges:HomeConstants.readingRanges.gasVolt,isGradient:false})}/>
                 </div>
             </Paper>
             <Paper className={classes.paper} style={{width:'45%',minWidth:'500px'}}>
                 <div className="dash-graphs-div">
-                    <LineChart dataX={timeLabels} dataY={tempList} label={'Temperature (°C) '} width="100%" colorHex={"#ff9800"}/>
+                    <LineChart dataX={timeLabels} dataY={tempList.slice(noOfPointsInGraph)} label={'Temperature (°C) '} width="100%" colorHex={HomeConstants.calcStatusColor({value:tempList[tempMainIndex],ranges:HomeConstants.readingRanges.temperature,isGradient:false})}/>
                 </div>
             </Paper>
             </div>
 
-
-            {/* Complex Graphs*/}
-            <Paper className={classes.paper} style={{width:'auto',height:'fit-content',display:'flex',flexDirection:'row'}}>
-                <div>
-                    <h2 className="sbi-header">Info</h2>
-                </div>
-                <div>
-
-                    <Plot 
-                        data={[
-                            {
-                                // x:tempList,
-                                // y:gasVoltList,
-                                //y-z-x
-                                z:[gasVoltList,tempList,heatIndex,],
-                                type: 'surface',
-                                
-                                
-                            }
-                        ]}
-                        layout={ { 
-                            width: 800,
-                            title : '3D Surface Plot', 
-                            scene: {
-                                camera: {
-                                    eye: {x: 1.87, y: -0.88, z: 0.64},
-                                    
-                                },
-                                xaxis : {
-                                    title : 'Heat Index',
-                                    
-                                },
-                                yaxis : {
-                                    title : 'Gas Volt',
-                                },
-                                zaxis : {
-                                    title : 'Temperature (°C)'
-                                }
-                                
-                            },
-                            
-                            
-                        } }
-                        />
-
-                </div>
-            </Paper>
             
         </Grid>
     )
