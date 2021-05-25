@@ -17,7 +17,6 @@ import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 //import Chart from './Chart';
 
@@ -27,6 +26,7 @@ import { Button, Card } from "@material-ui/core";
 
 import HomePage from './Home'
 import AddItem from './AddItem';
+import ViewPhotos from './ViewPhotos';
 import SearchByIng from './SearchByIng';
 import Inventory from './Inventory';
 
@@ -142,23 +142,6 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const callAPI = () => {
-    fetch("http://localhost:9000/testAPI")
-      .then((res) => res.text())
-      .then((res) => setApiResponse(res));
-  };
-
-  callAPI();
-
-  // Take still image and save to disk
-  // const runSnapApp = async () => {
-  //   const stillCamera = new StillCamera();
-
-  //   const image = await stillCamera.takeImage();
-
-  //   fs.writeFileSync("still-image" + Date.now() + ".jpg", image);
-  // };
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -214,13 +197,10 @@ export default function Dashboard() {
               <Grid item xs={12}>
               <Route path={"/"} exact component={HomePage}/>
                 <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
-                  
                   <Route path={"/additem"} exact component={AddItem}/>
                   <Route path={"/search"} exact component={SearchByIng}/>
                   <Route path={"/inventory"} exact component={Inventory}/>
-
-                  
-                  {/* <Button onClick={runSnapApp}>Scan Item</Button> */}
+                  <Route path={"/viewphotos"} exact component={ViewPhotos}/>
                 </Paper>
               </Grid>
             </Grid>

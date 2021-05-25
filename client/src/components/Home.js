@@ -88,6 +88,7 @@ export default function Home(props) {
                 <DashCard route="/additem" title="Add Item"/>
                 <DashCard route="/inventory" title="Inventory"/>
                 <DashCard route="/search" title="Look for Recipes"/>
+                <DashCard route="/viewphotos" title="View All Photos"/>
             </div>
 
             {/* Status Indicators*/}

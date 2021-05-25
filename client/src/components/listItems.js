@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SearchIcon from '@material-ui/icons/Search';
 import AddItemIcon from '@material-ui/icons/Add';
+import ViewPhotosIcon from '@material-ui/icons/Visibility';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
 
 
@@ -48,6 +49,15 @@ export const mainListItems = (
           <AddItemIcon />
         </ListItemIcon>
         <ListItemText primary="Add Item to Inventory" />
+      </ListItem>
+    </Link>
+
+    <Link to="/viewphotos">
+      <ListItem button>
+        <ListItemIcon>
+          <ViewPhotosIcon />
+        </ListItemIcon>
+        <ListItemText primary="View all Photos" />
       </ListItem>
     </Link>
     

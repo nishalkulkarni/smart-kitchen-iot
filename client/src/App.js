@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import SearchByIng from "./components/SearchByIng";
 import AddItem from "./components/AddItem";
+import ViewPhotos from "./components/ViewPhotos";
 
 function App() {
   return (
@@ -15,7 +16,11 @@ function App() {
         </Switch>
         <Switch>
           <Route path={"/additem"} exact component={AddItem} />
-        </Switch> */}
+        </Switch> 
+        <Switch>
+          <Route path={"/viewphotos"} exact component={ViewPhotos} />
+        </Switch> 
+        */}
       </Router>
     </div>
   );

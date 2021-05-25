@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import RecipeCard from "./RecipeCard";
-import { motion } from "framer-motion";
 import Grid from "@material-ui/core/Grid";
 import { projectFirestore } from "../firebase/config";
 
 export default function AddItem(props) {
-  const [recipeSource, setRecipeSource] = useState([{}]);
   const [inputIngredientName, setInputIngredientName] = useState("");
   const [inputIngredientUnit, setInputIngredientUnit] = useState("mg");
   const [inputIngredientQuantity, setInputIngredientQuantity] = useState(1);
@@ -48,36 +45,6 @@ export default function AddItem(props) {
         console.log(data);
         setInputIngredientImg(data);
       });
-    // setIngred((arr) => [...arr, inputIngredientName]);
-  };
-
-  const removeIngred = (e, ingredient) => {
-    e.preventDefault();
-
-    // setIngred((arr) => arr.splice(arr.indexOf(ingredient), 1));
-  };
-
-  const ingredientCard = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    backgroundColor: "blueviolet",
-    fontSize: "25px",
-    color: "white",
-    width: "fit-content",
-    height: "60px",
-    padding: "5px",
-    margin: "5px",
-
-    borderRadius: "15px",
-  };
-
-  const removeButton = {
-    backgroundColor: "blueviolet",
-    fontSize: "25px",
-    boxShadow: "0px",
-    border: "none",
-    marginLeft: "10px",
   };
 
   return (
