@@ -8794,6 +8794,11 @@
   "resolved" "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"
   "version" "2.1.0"
 
+"pi-camera@^1.5.0":
+  "integrity" "sha512-Pd7Bp/zfSrCUmATaYfNvXLTuNyk214CuQ5uenX5Km3HABfQ6gm93m/Vc43thHMSLnArlBOgPLxg7iVvYES7lZw=="
+  "resolved" "https://registry.npmjs.org/pi-camera/-/pi-camera-1.5.0.tgz"
+  "version" "1.5.0"
+
 "picomatch@^2.0.4", "picomatch@^2.0.5", "picomatch@^2.2.1", "picomatch@^2.2.2":
   "integrity" "sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg=="
   "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-2.2.2.tgz"
