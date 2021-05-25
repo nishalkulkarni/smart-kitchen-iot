@@ -167,6 +167,11 @@
   
 } */
 
+.invlist-div {
+  border: 1 solid red;
+  background-color: rgba(255, 255, 255, .4);
+}
+
 
 .invlist-label {
   font-family: 'Commissioner', sans-serif;

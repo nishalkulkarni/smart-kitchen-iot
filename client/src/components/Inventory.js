@@ -8,7 +8,7 @@ import RecipeCard from "./RecipeCard";
 import useFirestore from "../hooks/useFirestore";
 
 export default function Inventory(props) {
-  const [invList, setInvList] = useState([{}]);
+
   const [ingred, setIngred] = useState([]);
   const [recipeData, setRecipeData] = useState(null);
   const [lastSynch, setLastSynch] = useState(null);
@@ -18,8 +18,14 @@ export default function Inventory(props) {
 
   useEffect(() => {
     setLastSynch(Date().toLocaleString());
+    setIngred(
+      docs.map((item) => {
+        return item.produce.name;
+      })
+    );
+    console.log(ingred);
   }, [docs]);
-
+  
   // Current Format of the ingredients, extremely basic
   let tempList = [
     {
@@ -40,23 +46,10 @@ export default function Inventory(props) {
   ];
 
   async function getAvailableRecipes() {
-    await makeIngredQuery();
 
     getRecipeByIng();
   }
 
-  function makeIngredQuery() {
-    return new Promise((resolve, reject) => {
-      setIngred(
-        docs.map((item) => {
-          return item.produce.name;
-        })
-      );
-      if (ingred != null) {
-        resolve();
-      }
-    });
-  }
 
   function getRecipeByIng() {
     let ingredQuery = "";
@@ -115,7 +108,7 @@ export default function Inventory(props) {
       <div style={{ boxShadow: "5px", border: "2px solid black" }}>
         <GridList cellHeight={160} cols={3} style={inventoryList}>
           {docs.map((item) => (
-            <div>
+            <div className="invlist-div">
               <img src={item.produce.image} width="200px" style={{marginTop: "20px"}}/>
               <GridListTile>
                 {" "}
