@@ -108,7 +108,7 @@ export default function SearchByIng(props) {
        <Grid item xs={12}>
        <div>
            <h1 className="sbi-header">Search For Recipe using Ingredients!</h1>
-            <form >
+            <form style={{display:'flex',flexDirection:'row',justifyContent:'center'}}>
                 <label className="sbi-label">Enter ingredient to add : </label>
                 <input id="inputIngredient" type="text" value={searchTerm} placeholder="Apples!" onChange={handleChange}></input>
                 

@@ -214,7 +214,7 @@ export default function Dashboard() {
               <Grid item xs={12}>
               <Route path={"/"} exact component={HomePage}/>
                 <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
-                  <Route path={"/"} exact component={HomePage}/>
+                  
                   <Route path={"/additem"} exact component={AddItem}/>
                   <Route path={"/search"} exact component={SearchByIng}/>
                   <Route path={"/inventory"} exact component={Inventory}/>

@@ -10,12 +10,12 @@ function App() {
     <div className="App">
       <Router>
         <Route path={""} exact component={Dashboard} />
-        <Switch>
+        {/* <Switch>
           <Route path={"/search"} exact component={SearchByIng} />
         </Switch>
         <Switch>
           <Route path={"/additem"} exact component={AddItem} />
-        </Switch>
+        </Switch> */}
       </Router>
     </div>
   );
