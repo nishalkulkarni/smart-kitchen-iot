@@ -57,7 +57,7 @@ void loop() {
                          "Content-Length: " + postData.length() + "\r\n" +
                          "Content-Type: application/json\r\n" + "\r\n{" +
                          postData + "}\r\n";
-//    Serial.println(postRequest);
+    Serial.println(postRequest);
                          
 
 
@@ -139,7 +139,7 @@ void updateGasVoltage() {
 
     postData += "gasvolt: " + String(sensorVoltage) + ",";
 
-    if (sensorVoltage > 2.5) {
+    if (sensorVoltage > 3) {
         // Buzzer
         tone(PIEZOPIN, 1000, 5000);
 
