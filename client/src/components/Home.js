@@ -81,8 +81,8 @@ export default function Home(props) {
     return (
         <Grid item xs={12} style={{justifyContent:'space-evenly'}}>
 
-            <h1 className="sbi-header" style={{textAlign:'left'}}>Welcome to your Smart Kitchen Companion</h1> 
-            <Divider style={{width:'60%'}}/>
+            <h1 className="sbi-header" style={{textAlign:'center'}}>Welcome to your Smart Kitchen Companion</h1> 
+            <Divider style={{width:'100%'}}/>
             
             <div className="dash-div">
                 <DashCard route="/additem" title="Add Item"/>
