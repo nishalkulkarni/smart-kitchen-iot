@@ -8,8 +8,8 @@
 
 #define FANPIN 10
 
-String server = "http://192.168.1.3:9000";
-String uri = "/livefeed";
+String server = "https://smart-kitchen-2100c-default-rtdb.asia-southeast1.firebasedatabase.app";
+String uri = "/";
 
 SoftwareSerial esp8266(2, 3); // RX, TX
 
