@@ -1,12 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
 /** sbi - Search By Ingredient **/
 
 :root {
+  --theme-orange : #ff9800;
+  --theme-green: #4caf50;
+  --theme-red: #f44336;
+  --theme-purple : #9c27b0;
   --theme-blue : #3f51b5;
   --sky-blue : #4c64e9;
   --light-blue : #6377e9;
+
+  --blue-gradient : linear-gradient(90deg, rgba(63,81,181,1) 0%, rgba(76,100,233,1) 100%);
+  --orange-gradient : linear-gradient(90deg, rgba(255,152,0,1) 0%, rgba(223,135,5,1) 100%);
+  --purple-gradient : radial-gradient(circle, rgba(156,39,176,1) 0%, rgba(127,30,143,1) 100%);
+  --green-gradient : linear-gradient(90deg, rgba(76,175,80,1) 0%, rgba(71,158,75,1) 100%);
+  --red-gradient : linear-gradient(90deg, rgba(244,67,54,1) 0%, rgba(170,50,41,1) 100%);
 }
 
 .App {
@@ -73,9 +85,6 @@
   width: 100%;
 }
 
-.button-default.button-expand {
-  
-}
 
 .recipe-info-panel {
   border: 1px black;
@@ -131,7 +140,7 @@
 }
 
 .sbi-header {
-  font-family: 'Sansita Swashed', cursive;
+  font-family: 'Nanum Gothic', sans-serif;;
   font-size: xx-large;
 }
 
@@ -140,6 +149,23 @@
   font-size: large;
 }
 
+.info-text {
+  font-family: 'Commissioner', sans-serif;
+  font-size: normal;
+}
+
+.status-label {
+  font-size: large;
+  font-family: 'Bungee', cursive;
+  font-weight: lighter;
+}
+
+/* #inputIngredient {
+  font-family: 'Commissioner', sans-serif;
+  font-size: 20px;
+  color: #282c34;
+  
+} */
 
 
 .invlist-label {
@@ -147,9 +173,23 @@
   font-size: x-large;
 }
 
+
+/* FOR HOME DASH BOARD */
+
+.bubble-heading {
+  color: white;
+  font-weight: normal;
+  font-size: x-large;
+  background: linear-gradient(90deg, rgba(76,100,233,1) 0%, rgba(63,81,181,1) 100%);
+  width: fit-content;
+  border-radius: 10px;
+  padding: 5px;
+
+}
+
 .dash-card {
  
-  background-color: whitesmoke;
+  background-color: white;
   width: fit-content;
   padding: 0.5rem;
   margin : 0.5rem;
@@ -174,4 +214,19 @@
   flex-direction: row;
   justify-content: center;
   
+}
+
+.dash-graphs-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.heat-index-div {
+  background-color: whitesmoke;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
 }

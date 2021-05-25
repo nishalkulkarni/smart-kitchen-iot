@@ -186,7 +186,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Recipe Hunter
+            Smart Kitchen Companion
           </Typography>
           <h2>{apiResponse}</h2>
         </Toolbar>
@@ -212,6 +212,7 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
+              <Route path={"/"} exact component={HomePage}/>
                 <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
                   <Route path={"/"} exact component={HomePage}/>
                   <Route path={"/additem"} exact component={AddItem}/>
