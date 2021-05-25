@@ -48,8 +48,8 @@ export default function Inventory(props) {
   function makeIngredQuery() {
     return new Promise((resolve, reject) => {
       setIngred(
-        tempList.map((item) => {
-          return item.name;
+        docs.map((item) => {
+          return item.produce.name;
         })
       );
       if (ingred != null) {
