@@ -61,7 +61,7 @@ const runApp = async () => {
   const stillCamera = new StillCamera({
     width: 1280,
     height: 720,
-    delay: 1000,
+    delay: 4000,
   });
   const image = await stillCamera.takeImage();
 
