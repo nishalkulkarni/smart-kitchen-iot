@@ -8,7 +8,8 @@
 
 #define FANPIN 10
 
-String server = "https://smart-kitchen-2100c-default-rtdb.asia-southeast1.firebasedatabase.app";
+String server =
+    "https://smart-kitchen-2100c-default-rtdb.asia-southeast1.firebasedatabase.app";
 String uri = "/";
 
 SoftwareSerial esp8266(2, 3); // RX, TX
@@ -58,14 +59,10 @@ void loop() {
                          "Content-Type: application/json\r\n" + "\r\n{" +
                          postData + "}\r\n";
     Serial.println(postRequest);
-                         
-
 
     if (esp8266.available()) {
-        Serial.println("esp is available");
         httppost(postData);
     }
-    
 }
 
 String sendData(String command, const int timeout, boolean debug) {
@@ -85,25 +82,10 @@ String sendData(String command, const int timeout, boolean debug) {
     return response; // return the String response.
 }
 
-void InitWifiModuleOLD()      
-{      
-  sendData("AT+RST\r\n", 2000, DEBUG);                                                  //reset the ESP8266 module.      
-//  delay(1000);      
-  sendData("AT+CWJAP=\"NishalEXT\",\"Nishal2000\"\r\n", 2000, DEBUG);        //connect to the WiFi network.      
-  delay (3000);      
-  sendData("AT+CWMODE=1\r\n", 1500, DEBUG);                                             //set the ESP8266 WiFi mode to station mode.      
-  delay (1000);      
-  sendData("AT+CIFSR\r\n", 1500, DEBUG);                                                //Show IP Address, and the MAC Address.      
-  delay (1000);      
-  sendData("AT+CIPMUX=1\r\n", 1500, DEBUG);                                             //Multiple conections.      
-  delay (1000);      
-  sendData("AT+CIPSERVER=1,80\r\n", 1500, DEBUG);                                       //start the communication at port 80, port 80 used to communicate with the web servers through the http requests.      
-}
-
 void InitWifiModule() {
     sendData("AT\r\n", 2000, DEBUG);
     sendData("AT+GMR\r\n", 2000, DEBUG);
-//    sendData("AT+RESTORE\r\n", 2000, DEBUG);
+    //    sendData("AT+RESTORE\r\n", 2000, DEBUG);
     sendData("AT+UART_DEF=9600,8,1,0,0\r\n", 2000, DEBUG);
     sendData("AT+RST\r\n", 2000, DEBUG);
     delay(1000);
@@ -111,14 +93,11 @@ void InitWifiModule() {
     // set the ESP8266 WiFi mode to station mode.
     sendData("AT+CWMODE=3\r\n", 1500, DEBUG);
     delay(2000);
-//
-//        sendData("AT+CWLAP\r\n", 6500, DEBUG);
-//        delay(6500);
-//    
+
     // connect to the WiFi network.
     sendData("AT+CWJAP=\"NishalEXT\",\"Nishal2000\"\r\n", 6000, DEBUG);
-    delay(6000);
-//    
+    delay(4000);
+    //
     // Show IP Address, and the MAC Address.
     sendData("AT+CIFSR\r\n", 4500, DEBUG);
     delay(2000);
@@ -126,7 +105,7 @@ void InitWifiModule() {
     // Multiple conections.
     sendData("AT+CIPMUX=1\r\n", 1500, DEBUG);
     delay(1000);
-    
+
     // Show IP Address, and the MAC Address.
     sendData("AT+CIFSR\r\n", 4500, DEBUG);
     delay(2000);
@@ -149,7 +128,6 @@ void updateGasVoltage() {
         delay(4000);
         digitalWrite(FANPIN, LOW);
         Serial.println("fan low");
-        delay(4000);
     }
     delay(2000);
 }
@@ -164,11 +142,22 @@ void updateHumidityTemp() {
 
     // Check if any reads failed and exit early (to try again).
     if (isnan(h) || isnan(t)) {
-        Serial.println(F("Failed to read from DHT sensor!"));
+        Serial.println(F("Failed to read from DHT sensor! Using sample values for h and t"));
+        h = 37;
+        t = 31;
         return;
     } else {
         // Compute heat index in Celsius (isFahreheit = false)
         float hic = dht.computeHeatIndex(t, h, false);
+
+        if (t > 40) {
+            //    Fan simulator
+            digitalWrite(FANPIN, HIGH);
+            Serial.println("fan high");
+            delay(4000);
+            digitalWrite(FANPIN, LOW);
+            Serial.println("fan low");
+        }
 
         postData += "temperature: " + String(t) + ",humidity: " + String(h) +
                     ",heatindex: " + String(hic);
@@ -189,23 +178,11 @@ void httppost(String data) {
     sendData(sendCmd, 2500, DEBUG);
     delay(500);
 
-    //    esp8266.print(sendCmd);
-    //    esp8266.println(postRequest.length());
-
-    //        Serial.println(postRequest);
     Serial.println(postData);
 
     if (esp8266.find(">")) {
-        Serial.println("Sending..");
-        //        esp8266.print(postRequest);
         sendData(postRequest, 3500, DEBUG);
     }
-    delay(3000);
-
-    if (esp8266.find("SEND OK")) {
-        Serial.println("Packet sent");
-    }
-
     delay(3000);
 
     while (esp8266.available()) {
