@@ -30,22 +30,7 @@ import ViewPhotos from "./ViewPhotos";
 import SearchByIng from "./SearchByIng";
 import Inventory from "./Inventory";
 
-import BGdoodles from "../assets/bg-doodles.png";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const drawerWidth = 240;
 
