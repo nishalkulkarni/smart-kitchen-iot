@@ -24,17 +24,15 @@ import { mainListItems, secondaryListItems } from "./listItems";
 import * as fs from "fs";
 import { Button, Card } from "@material-ui/core";
 
-import HomePage from './Home'
-import AddItem from './AddItem';
-import ViewPhotos from './ViewPhotos';
-import SearchByIng from './SearchByIng';
-import Inventory from './Inventory';
+import HomePage from "./Home";
+import AddItem from "./AddItem";
+import ViewPhotos from "./ViewPhotos";
+import SearchByIng from "./SearchByIng";
+import Inventory from "./Inventory";
 
-import BGdoodles from '../assets/bg-doodles.png';
+import BGdoodles from "../assets/bg-doodles.png";
 
-
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -195,12 +193,19 @@ export default function Dashboard() {
           <Container maxWidth="lg" className={classes.container}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-              <Route path={"/"} exact component={HomePage}/>
-                <Paper className={classes.paper} style={{ backgroundPosition: 'center', backgroundRepeat: 'repeat',backgroundAttachment: 'fixed'}}>
-                  <Route path={"/additem"} exact component={AddItem}/>
-                  <Route path={"/search"} exact component={SearchByIng}/>
-                  <Route path={"/inventory"} exact component={Inventory}/>
-                  <Route path={"/viewphotos"} exact component={ViewPhotos}/>
+                <Route path={"/"} exact component={HomePage} />
+                <Paper
+                  className={classes.paper}
+                  style={{
+                    backgroundPosition: "center",
+                    backgroundRepeat: "repeat",
+                    backgroundAttachment: "fixed",
+                  }}
+                >
+                  <Route path={"/additem"} exact component={AddItem} />
+                  <Route path={"/search"} exact component={SearchByIng} />
+                  <Route path={"/inventory"} exact component={Inventory} />
+                  <Route path={"/viewphotos"} exact component={ViewPhotos} />
                 </Paper>
               </Grid>
             </Grid>

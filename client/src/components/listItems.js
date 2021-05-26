@@ -1,20 +1,18 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import SearchIcon from '@material-ui/icons/Search';
-import AddItemIcon from '@material-ui/icons/Add';
-import ViewPhotosIcon from '@material-ui/icons/Visibility';
-import AllInboxIcon from '@material-ui/icons/AllInbox';
-
-
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import SearchIcon from "@material-ui/icons/Search";
+import AddItemIcon from "@material-ui/icons/Add";
+import ViewPhotosIcon from "@material-ui/icons/Visibility";
+import AllInboxIcon from "@material-ui/icons/AllInbox";
 
 export const mainListItems = (
-  <div >
+  <div>
     <Link to="/">
       <ListItem button>
         <ListItemIcon>
@@ -33,7 +31,6 @@ export const mainListItems = (
       </ListItem>
     </Link>
 
-    
     <Link to="/search">
       <ListItem button>
         <ListItemIcon>
@@ -60,7 +57,5 @@ export const mainListItems = (
         <ListItemText primary="View all Photos" />
       </ListItem>
     </Link>
-    
   </div>
 );
-

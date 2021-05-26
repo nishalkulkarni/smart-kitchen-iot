@@ -33,14 +33,14 @@ export default function ViewPhotos(props) {
         <h1 className="sbi-header">All Photos taken</h1>
         <div id="img-area">
           {img_list.map((ele) => (
-              <img
-                key={ele.id}
-                id={ele.id}
-                src={ele.src}
-                alt={ele.alt}
-                width={ele.width}
-              />
-            ))}
+            <img
+              key={ele.id}
+              id={ele.id}
+              src={ele.src}
+              alt={ele.alt}
+              width={ele.width}
+            />
+          ))}
         </div>
       </div>
     </Grid>

@@ -100,9 +100,14 @@ export default function AddItem(props) {
             Add
           </button>
         </form>
-        
+
         <h2 className="sbi-header">Photo</h2>
-        <img src={inputIngredientImg} alt="item photo" width="640" height="480"/>
+        <img
+          src={inputIngredientImg}
+          alt="item photo"
+          width="640"
+          height="480"
+        />
       </div>
     </Grid>
   );

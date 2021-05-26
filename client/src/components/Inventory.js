@@ -8,7 +8,6 @@ import RecipeCard from "./RecipeCard";
 import useFirestore from "../hooks/useFirestore";
 
 export default function Inventory(props) {
-
   const [ingred, setIngred] = useState([]);
   const [recipeData, setRecipeData] = useState(null);
   const [lastSynch, setLastSynch] = useState(null);
@@ -27,10 +26,8 @@ export default function Inventory(props) {
   }, [docs]);
 
   async function getAvailableRecipes() {
-
     getRecipeByIng();
   }
-
 
   function getRecipeByIng() {
     let ingredQuery = "";
@@ -90,7 +87,11 @@ export default function Inventory(props) {
         <GridList cellHeight={160} cols={3} style={inventoryList}>
           {docs.map((item) => (
             <div className="invlist-div">
-              <img src={item.produce.image} width="200px" style={{marginTop: "20px"}}/>
+              <img
+                src={item.produce.image}
+                width="200px"
+                style={{ marginTop: "20px" }}
+              />
               <GridListTile>
                 {" "}
                 <h2 className="invlist-label">{item.produce.name}</h2>{" "}
