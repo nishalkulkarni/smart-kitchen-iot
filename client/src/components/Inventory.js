@@ -25,25 +25,6 @@ export default function Inventory(props) {
     );
     console.log(ingred);
   }, [docs]);
-  
-  // Current Format of the ingredients, extremely basic
-  let tempList = [
-    {
-      name: "apple",
-      unit: "cups",
-      value: 3,
-    },
-    {
-      name: "flour",
-      unit: "mg",
-      value: 100,
-    },
-    {
-      name: "milk",
-      unit: "ml",
-      value: 400,
-    },
-  ];
 
   async function getAvailableRecipes() {
 
