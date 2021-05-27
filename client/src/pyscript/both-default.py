@@ -36,4 +36,4 @@ while True:
     temperature = round(random.uniform(29.2, 29.8), 2)
     heatindex = round(random.uniform(31.53, 31.88), 2)
     update_firebase(gasvolt, temperature, humidity, heatindex)
-    time.sleep(4)
+    time.sleep(2)
