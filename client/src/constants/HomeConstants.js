@@ -29,8 +29,8 @@ heatIndex : {
 },
 humidity : {
     max : 54.0,
-    mid : 53.5,
-    min : 53.0,
+    mid : 43.5,
+    min : 40.0,
 },
 gasVolt :{
     max : 2.50,
