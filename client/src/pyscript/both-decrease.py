@@ -35,12 +35,12 @@ dec_temp.reverse()
 dec_hi.reverse()
 
 for i in range(len(dec_gv)):
-    humidity = round(random.uniform(53,54),2)
+    humidity = round(random.uniform(50,51),2)
     update_firebase(dec_gv[i], dec_temp[i], humidity, dec_hi[i])
 
 while True:
     gasvolt = round(random.uniform(1.92, 1.95), 2)
-    humidity = round(random.uniform(53, 54), 2)
+    humidity = round(random.uniform(50, 51), 2)
     temperature = round(random.uniform(29.2, 29.8), 2)
     heatindex = round(random.uniform(31.53, 31.88), 2)
     update_firebase(gasvolt, temperature, humidity, heatindex)

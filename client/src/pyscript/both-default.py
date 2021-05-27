@@ -32,7 +32,7 @@ def update_firebase(gasvolt, temperature, humidity, heatindex):
 
 while True:
     gasvolt = round(random.uniform(1.9, 1.95), 2)
-    humidity = round(random.uniform(53, 54), 2)
+    humidity = round(random.uniform(50, 51), 2)
     temperature = round(random.uniform(29.2, 29.8), 2)
     heatindex = round(random.uniform(31.53, 31.88), 2)
     update_firebase(gasvolt, temperature, humidity, heatindex)

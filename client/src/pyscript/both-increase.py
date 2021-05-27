@@ -31,12 +31,12 @@ inc_temp = [30.2,30.4,30.5,30.8,31.2,31.7,32.5,33.1,33.6,34.0,34.1,34.2,34.5,34.
 inc_hi = [31.3,31.1,31.4,31.6,32.3,32.6,33.3,34.0,34.4,35.2,35.2,35.4,35.5,35.7]
 
 for i in range(len(inc_gv)):
-    humidity = round(random.uniform(53,54),2)
+    humidity = round(random.uniform(50,51),2)
     update_firebase(inc_gv[i], inc_temp[i], humidity, inc_hi[i])
 
 while True:
     gasvolt = round(random.uniform(2.6,2.8),2)
-    humidity = round(random.uniform(53,54),2)
+    humidity = round(random.uniform(50,51),2)
     temperature = round(random.uniform(34.5,34.8),2)
     heatindex = round(random.uniform(32.53,32.88),2)
     update_firebase(gasvolt, temperature, humidity, heatindex)

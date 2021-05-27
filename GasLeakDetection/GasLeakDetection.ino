@@ -105,10 +105,6 @@ void InitWifiModule() {
     // Multiple conections.
     sendData("AT+CIPMUX=1\r\n", 1500, DEBUG);
     delay(1000);
-
-    // Show IP Address, and the MAC Address.
-    sendData("AT+CIFSR\r\n", 4500, DEBUG);
-    delay(2000);
 }
 
 void updateGasVoltage() {
@@ -145,12 +141,18 @@ void updateHumidityTemp() {
         Serial.println(F("Failed to read from DHT sensor! Using sample values for h and t"));
         h = 37;
         t = 31;
+        float hic = dht.computeHeatIndex(t, h, false);
+        postData += "temperature: " + String(t) + ",humidity: " + String(h) +
+                    ",heatindex: " + String(hic);
         return;
     } else {
         // Compute heat index in Celsius (isFahreheit = false)
         float hic = dht.computeHeatIndex(t, h, false);
 
         if (t > 40) {
+            // Buzzer
+            tone(PIEZOPIN, 1000, 5000);
+        
             //    Fan simulator
             digitalWrite(FANPIN, HIGH);
             Serial.println("fan high");

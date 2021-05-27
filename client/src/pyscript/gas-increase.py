@@ -26,15 +26,15 @@ def update_firebase(gasvolt, temperature, humidity, heatindex):
     result = firebase.post('/sensor/data', data)
     print(result)
 
-inc_gv = [1.92,1.95,1.97,1.98,2.05,2.12,2.19,2.22,2.27,2.30,2.36,2.42,2.48,2.52]
+inc_gv = [1.92,1.95,1.97,1.98,2.15,2.22,2.39,2.45,2.57,2.63,2.74,2.92,3.06,3.18]
 
 for i in range(len(inc_gv)):
-    humidity = round(random.uniform(53,54),2)
-    update_firebase(inc_gv[i], round(random.uniform(29.2, 29.8), 2), humidity, round(random.uniform(31.53, 31.88), 2))
+    humidity = round(random.uniform(50,51),2)
+    update_firebase(inc_gv[i], round(random.uniform(29.2, 29.8), 2), humidity, round(random.uniform(31.50, 31.88), 2))
 
 while True:
     gasvolt = round(random.uniform(2.6,2.8),2)
-    humidity = round(random.uniform(53,54),2)
+    humidity = round(random.uniform(50,51),2)
     temperature = round(random.uniform(29.2, 29.8), 2)
     heatindex = round(random.uniform(31.53, 31.88), 2)
     update_firebase(gasvolt, temperature, humidity, heatindex)
