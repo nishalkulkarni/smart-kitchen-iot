@@ -67,6 +67,17 @@
   justify-content: center;
 }
 
+.inventory-val-cards-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(35, 66, 66, 0.2);
+  border-radius: 8px;
+  box-shadow: 6px 6px 12px 1px rgba(0,0,0,0.1);
+  margin: 12px;
+}
+
 .recipe-card {
   display: flex;
   flex-direction: row;
@@ -135,8 +146,44 @@
 }
 
 .button-default:hover {
-
   background-color: var(--sky-blue);
+  cursor: pointer;
+}
+
+.button-danger {
+  border: none;
+  margin: 5px;
+  width: fit-content;
+  background-color: var(--theme-red);
+  color: white;
+  font-size: 20px;
+  transition: ease-in-out 300ms;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 15px;
+}
+
+.button-danger:hover {
+  cursor: pointer;
+}
+
+.button-info {
+  border: none;
+  margin: 5px;
+  width: fit-content;
+  background-color: var(--theme-orange);
+  color: white;
+  font-size: 20px;
+  transition: ease-in-out 300ms;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 15px;
+}
+
+.button-info:hover {
+  cursor: pointer;
 }
 
 .sbi-header {
@@ -170,6 +217,11 @@
 .invlist-div {
   border: 1 solid red;
   background-color: rgba(255, 255, 255, .4);
+  background-color: rgba(11, 80, 80, 0.2);
+  border-radius: 16px;
+  padding-bottom: 16px; 
+  margin: 0 16px 0 16px;
+  box-shadow: 6px 6px 12px 1px rgba(0,0,0,0.1);
 }
 
 

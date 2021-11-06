@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "chart.js": "^3.2.1",
+    "chokidar": "^3.5.2",
     "dotenv": "^8.2.0",
     "firebase": "^8.5.0",
     "framer-motion": "^4.1.16",
