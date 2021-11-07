@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
 import { motion } from "framer-motion";
 import Grid from "@material-ui/core/Grid";
+import Slider from "@material-ui/core/Slider";
 
 //TODO how to get recipe Source?
 
@@ -81,10 +82,11 @@ export default function SearchByIng(props) {
     color: "white",
     width: "fit-content",
     height: "60px",
-    padding: "5px",
-    margin: "5px",
-
-    borderRadius: "15px",
+    lineHeight: "30px",
+    padding: "12px",
+    marginTop: "24px",
+    marginLeft: "16px",
+    borderRadius: "16px",
   };
 
   const removeButton = {
@@ -93,25 +95,21 @@ export default function SearchByIng(props) {
     boxShadow: "0px",
     border: "none",
     marginLeft: "10px",
+    cursor: "pointer",
   };
 
   return (
     <Grid item xs={12}>
       <div>
         <h1 className="sbi-header">Search For Recipe using Ingredients!</h1>
-        <form
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
+        <form>
           <label className="sbi-label">Enter ingredient to add : </label>
           <input
             id="inputIngredient"
             type="text"
+            className="inputBox"
             value={searchTerm}
-            placeholder="Apples!"
+            placeholder="Apples"
             onChange={handleChange}
           ></input>
 
@@ -124,20 +122,22 @@ export default function SearchByIng(props) {
           </button>
           <br />
           <br />
-          <button onClick={handleSubmit} className="button-default">
-            Search
-          </button>
-          <br />
-          <br />
           <label className="sbi-label">Number of Recipes : </label>
           <input
             id="inputQuantity"
+            className="inputBox"
             type="number"
             name="quantity"
             min="1"
-            max="6"
+            max="10"
+            step="1"
             onChange={changeQuantity}
           ></input>
+          <br />
+          <br />
+          <button onClick={handleSubmit} className="button-default">
+            Search
+          </button>
         </form>
         <div className="ingredients-div">
           <h2 className="sbi-header">Ingredients:</h2>

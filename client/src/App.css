@@ -186,6 +186,24 @@
   cursor: pointer;
 }
 
+.button-green {
+  border: none;
+  margin: 5px;
+  width: fit-content;
+  background-color: var(--theme-green);
+  color: white;
+  font-size: 20px;
+  transition: ease-in-out 300ms;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 15px;
+}
+
+.button-green:hover {
+  cursor: pointer;
+}
+
 .sbi-header {
   font-family: 'Sansita Swashed', cursive;
   font-size: xx-large;
@@ -207,12 +225,13 @@
   font-weight: lighter;
 }
 
-/* #inputIngredient {
+.inputBox {
   font-family: 'Commissioner', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
+  margin: 0 16px 0 16px;
   color: #282c34;
   
-} */
+}
 
 .invlist-div {
   border: 1 solid red;
@@ -286,4 +305,73 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0 1rem;
+  max-width: 300px;
+  box-shadow: 0 4px 8px 2px rgba(77, 77, 77, 0.15);
+  border-radius: 8px;
+  background-color: rgba(255, 228, 196,0.8);
+}
+
+article h1 {
+  font-size: 24px;
+}
+
+article ul {
+  list-style: none;
+  text-align: left;
+  font-size: 16px;
+}
+
+
+.nutrients ul {
+  display: flex;
+  width: 35rem;
+  /* justify-content: space-evenly; */
+  list-style: none;
+  margin: 2rem auto;
+}
+
+.nutrients ul li{
+  font-size: 24px;
+}
+
+
+.meals {
+  display: flex;
+}
+
+.recipeLink {
+  text-decoration: none;
+  background-color: #7f21eb;
+  color: #f3f3f3;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.recipeLink :hover {
+  background-color: #6c13d1;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 720px) {
+  .meals {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nutrients ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }

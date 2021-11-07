@@ -93,9 +93,9 @@ export default function Home(props) {
 
       <div className="dash-div">
         <DashCard route="/additem" title="Add Item" />
-        <DashCard route="/inventory" title="Inventory" />
-        <DashCard route="/search" title="Look for Recipes" />
-        <DashCard route="/viewphotos" title="View All Photos" />
+        <DashCard route="/inventory" title="Inventory Management" />
+        <DashCard route="/search" title="Recipes Search" />
+        <DashCard route="/cookingguide" title="Cooking Assistant" />
       </div>
 
       {/* Status Indicators*/}

@@ -4,19 +4,25 @@ import { projectFirestore } from "../firebase/config";
 
 export default function AddItem(props) {
   const [inputIngredientName, setInputIngredientName] = useState("");
-  const [inputIngredientUnit, setInputIngredientUnit] = useState("mg");
+  const [inputIngredientUnit, setInputIngredientUnit] = useState("grams");
   const [inputIngredientQuantity, setInputIngredientQuantity] = useState(1);
+  const [inputIngredientPrice, setInputIngredientPrice] = useState(1);
   const [inputIngredientImg, setInputIngredientImg] = useState("#");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputIngredientName || !inputIngredientQuantity) return;
+    if (!inputIngredientName || !inputIngredientQuantity || !inputIngredientPrice){
+      alert("Please check input fields again, Invalid input.");
+      return;
+    }
     projectFirestore.collection("inventory").add({
       produce: {
         name: inputIngredientName,
         unit: inputIngredientUnit,
         value: inputIngredientQuantity,
         image: inputIngredientImg,
+        price: inputIngredientPrice,
+        stockreminder: false,
       },
     });
     // setInputIngredientName("");
@@ -32,6 +38,10 @@ export default function AddItem(props) {
 
   const handleInputIngredientQuantityChange = (e) => {
     setInputIngredientQuantity(e.target.value);
+  };
+
+  const handleInputIngredientPriceChange = (e) => {
+    setInputIngredientPrice(e.target.value);
   };
 
   const takeIngredientPhoto = (e) => {
@@ -57,6 +67,7 @@ export default function AddItem(props) {
             name="inputIngredientName"
             id="inputIngredientName"
             type="text"
+            className="inputBox"
             value={inputIngredientName}
             placeholder="Apples"
             onChange={handleInputIngredientNameChange}
@@ -68,9 +79,10 @@ export default function AddItem(props) {
           <select
             name="inputIngredientUnit"
             id="inputIngredientUnit"
+            className="inputBox"
             onChange={handleInputIngredientUnitChange}
           >
-            <option value="mg">mg</option>
+            <option value="grams">grams</option>
             <option value="ml">ml</option>
             <option value="units">units</option>
           </select>
@@ -80,11 +92,27 @@ export default function AddItem(props) {
           <input
             type="number"
             id="inputIngredientQuantity"
+            className="inputBox"
             name="inputIngredientQuantity"
             value={inputIngredientQuantity}
             placeholder="1"
             onChange={handleInputIngredientQuantityChange}
             min="0"
+            required
+          />
+          <br />
+          <br />
+          <label className="sbi-label">Price(in Rs): </label>
+          <input
+            type="number"
+            id="inputIngredientPrice"
+            className="inputBox"
+            name="inputIngredientPrice"
+            value={inputIngredientPrice}
+            placeholder="1"
+            onChange={handleInputIngredientPriceChange}
+            min="0"
+            step="0.5"
             required
           />
           <br />

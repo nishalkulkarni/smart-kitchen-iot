@@ -180,7 +180,7 @@ export default function Inventory(props) {
               <div className="invlist-div">
                 <img
                   src={item.produce.image}
-                  width="200px"
+                  width="80%"
                   style={{ marginTop: "20px" }}
                 />
                 <div>
@@ -201,6 +201,7 @@ export default function Inventory(props) {
                   <button className="button-info" onClick={(e) => updateQuantity(e, false, item)}>
                     ➖
                   </button>
+                  <br/>
                   <button className="button-danger" onClick={(e) => removeItem(e, item)}>
                     Remove Item
                   </button>

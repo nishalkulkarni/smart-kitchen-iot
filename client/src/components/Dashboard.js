@@ -29,6 +29,7 @@ import AddItem from "./AddItem";
 import ViewPhotos from "./ViewPhotos";
 import SearchByIng from "./SearchByIng";
 import Inventory from "./Inventory";
+import CookingGuide from "./CookingGuide";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -190,6 +191,7 @@ export default function Dashboard() {
                   <Route path={"/additem"} exact component={AddItem} />
                   <Route path={"/search"} exact component={SearchByIng} />
                   <Route path={"/inventory"} exact component={Inventory} />
+                  <Route path={"/cookingguide"} exact component={CookingGuide} />
                   <Route path={"/viewphotos"} exact component={ViewPhotos} />
                 </Paper>
               </Grid>
