@@ -105,7 +105,7 @@ export default function Inventory(props) {
     if (val < 0)
       val = 0;
 
-    if (!item.produce.stockreminder && val == 0) {
+    if (!item.produce.stockreminder && val === 0) {
       projectFirestore.collection("inventory").doc(item.id).delete().then(() => {
         console.log("Item successfully deleted!");
       }).catch((error) => {
@@ -123,8 +123,7 @@ export default function Inventory(props) {
         },
       });
 
-      if (item.produce.stockreminder && val == 0) {
-        // alert(item.produce.name + "Out of stock!");
+      if (item.produce.stockreminder && val === 0) {
         handlePopupOpen(item.produce.name);
       }
     }
@@ -170,6 +169,7 @@ export default function Inventory(props) {
           src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-standard.png"
           width="71px"
           height="20px"
+          alt="firebase logo"
         ></img>{" "}
         : {lastSynch}
       </h2>
@@ -182,6 +182,7 @@ export default function Inventory(props) {
                   src={item.produce.image}
                   width="80%"
                   style={{ marginTop: "20px" }}
+                  alt="item"
                 />
                 <div>
                   {" "}

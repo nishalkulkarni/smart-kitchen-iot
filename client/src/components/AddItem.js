@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { projectFirestore } from "../firebase/config";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 export default function AddItem(props) {
   const [inputIngredientName, setInputIngredientName] = useState("");
   const [inputIngredientUnit, setInputIngredientUnit] = useState("grams");
   const [inputIngredientQuantity, setInputIngredientQuantity] = useState(1);
   const [inputIngredientPrice, setInputIngredientPrice] = useState(1);
-  const [inputIngredientImg, setInputIngredientImg] = useState("#");
+  const [inputIngredientImg, setInputIngredientImg] = useState(null);
+  const [takingPhoto, setTakingPhoto] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputIngredientName || !inputIngredientQuantity || !inputIngredientPrice){
+    if (!inputIngredientName || !inputIngredientQuantity || !inputIngredientPrice) {
       alert("Please check input fields again, Invalid input.");
       return;
     }
@@ -24,8 +27,12 @@ export default function AddItem(props) {
         price: inputIngredientPrice,
         stockreminder: false,
       },
+    }).then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+      setInputIngredientImg(null);
+      alert("Item successfully added to inventory");
     });
-    // setInputIngredientName("");
+
   };
 
   const handleInputIngredientNameChange = (e) => {
@@ -37,22 +44,22 @@ export default function AddItem(props) {
   };
 
   const handleInputIngredientQuantityChange = (e) => {
-    setInputIngredientQuantity(e.target.value);
+    setInputIngredientQuantity(parseInt(e.target.value));
   };
 
   const handleInputIngredientPriceChange = (e) => {
-    setInputIngredientPrice(e.target.value);
+    setInputIngredientPrice(parseInt(e.target.value));
   };
 
   const takeIngredientPhoto = (e) => {
     e.preventDefault();
-
+    setTakingPhoto(true);
     fetch("http://192.168.0.105:3253/", {
       mode: "cors",
     })
       .then((response) => response.text())
       .then((data) => {
-        console.log(data);
+        setTakingPhoto(false);
         setInputIngredientImg(data);
       });
   };
@@ -62,7 +69,7 @@ export default function AddItem(props) {
       <div>
         <h1 className="sbi-header">Add an item</h1>
         <form>
-          <label className="sbi-label">Enter ingredient name: </label>
+          <label className="sbi-label">Ingredient name: </label>
           <input
             name="inputIngredientName"
             id="inputIngredientName"
@@ -129,14 +136,25 @@ export default function AddItem(props) {
           </button>
         </form>
 
+
         <h2 className="sbi-header">Photo</h2>
-        <img
+        {inputIngredientImg && <img
           src={inputIngredientImg}
-          alt="item photo"
+          alt="item "
           width="640"
           height="480"
-        />
+        />}
+        {takingPhoto && <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={30000} //3 secs
+        />}
       </div>
+
+
+
     </Grid>
   );
 }

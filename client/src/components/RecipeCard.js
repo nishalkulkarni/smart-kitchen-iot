@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import bigBasketLogo from "../assets/bigbasket.png";
 function RecipeCard(props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [originalUrl, setOrignialUrl] = useState(null);
@@ -9,7 +8,7 @@ function RecipeCard(props) {
     if (originalUrl == null) {
       gotToOrignal();
     }
-    if (isExpanded == false) {
+    if (isExpanded === false) {
       setIsExpanded(true);
     } else {
       setIsExpanded(false);

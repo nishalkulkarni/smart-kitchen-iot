@@ -2,24 +2,14 @@ import React, { useState } from "react";
 import RecipeCard from "./RecipeCard";
 import { motion } from "framer-motion";
 import Grid from "@material-ui/core/Grid";
-import Slider from "@material-ui/core/Slider";
 
 //TODO how to get recipe Source?
 
 export default function SearchByIng(props) {
-  const [recipeSource, setRecipeSource] = useState([{}]);
   const [searchTerm, setSearchTerm] = useState("");
   const [ingred, setIngred] = useState([]);
   const [recipeData, setRecipeData] = useState(null);
   const [recipeQuantity, setRecipeQuantity] = useState(1);
-
-  function getRecipeSource() {
-    recipeData.map((recipe) => {
-      fetch(
-        `https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=false`
-      );
-    });
-  }
 
   function getRecipeByIng() {
     let ingredQuery = "";

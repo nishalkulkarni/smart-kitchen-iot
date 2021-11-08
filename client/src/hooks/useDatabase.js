@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {projectDatabase, timestamp} from '../firebase/config';
+import {projectDatabase} from '../firebase/config';
 
 const useDatabase = ( path ) => {
     //path = "/sensor/data"
@@ -31,10 +31,8 @@ const useDatabase = ( path ) => {
             setTempList(temps);
             setHeatIndex(HI);
             setHumidity(humidities);
-            //console.log(humidity);
             }
         )
-        //console.log('Such as ',readings);
         
         return () => {
             DBref.off();

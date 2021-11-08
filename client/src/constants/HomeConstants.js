@@ -1,10 +1,4 @@
-import React, { useState } from 'react'
-import useDatabase from '../hooks/useDatabase';
-
-// const [value1,setValue1] = useState(heatIndex[hIMainIndex]);
-// const [value2,setValue2] = useState(humidity[humidityMainIndex]);
-// const [value3,setValue3] = useState(gasVoltList[gasVoltMainIndex]);
-// const [value4,setValue4] = useState(tempList[tempMainIndex]);
+import React from 'react'
 
 //Defines the Colors and Labels of each status    
 export const statusValues = {

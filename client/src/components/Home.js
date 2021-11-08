@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { animate, motion } from "framer-motion";
 
@@ -36,12 +34,6 @@ export default function Home(props) {
   let humidityMainIndex = humidity.length - 1;
   let gasVoltMainIndex = gasVoltList.length - 1;
   let tempMainIndex = tempList.length - 1;
-
-  // const [value1,setValue1] = useState(heatIndex[hIMainIndex]);
-  // const [value2,setValue2] = useState(humidity[humidityMainIndex]);
-  // const [value3,setValue3] = useState(gasVoltList[gasVoltMainIndex]);
-  // const [value4,setValue4] = useState(tempList[tempMainIndex]);
-  ////
 
   const statusRows = [
     {
@@ -78,8 +70,6 @@ export default function Home(props) {
   let timeLabels = [];
   for (let i = 0; i < Math.abs(noOfPointsInGraph); i++) {
     let seconds = i * 4;
-    let minutes = Math.floor(seconds / 60);
-    let left_secs = seconds - minutes * 60;
     timeLabels.push(seconds);
   }
   //

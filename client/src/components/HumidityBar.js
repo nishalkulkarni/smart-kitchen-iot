@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import * as HomeConstants from "../constants/HomeConstants";
 import ReactCardFlip from "react-card-flip";
-import GaugeChart from "react-gauge-chart";
 import { animate, motion } from "framer-motion";
-import { Divider } from "@material-ui/core";
 import ToolTip from "@material-ui/core/Tooltip";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";

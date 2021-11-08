@@ -10,19 +10,13 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems, secondaryListItems } from "./listItems";
-//import Chart from './Chart';
-
-// import { StillCamera } from "pi-camera-connect";
 import * as fs from "fs";
-import { Button, Card } from "@material-ui/core";
 
 import HomePage from "./Home";
 import AddItem from "./AddItem";
@@ -124,7 +118,7 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
