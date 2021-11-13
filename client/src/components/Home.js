@@ -83,8 +83,8 @@ export default function Home(props) {
 
       <div className="dash-div">
         <DashCard route="/additem" title="Add Item" />
-        <DashCard route="/inventory" title="Inventory Management" />
-        <DashCard route="/search" title="Recipes Search" />
+        <DashCard route="/inventory" title="Manage Inventory" />
+        <DashCard route="/search" title="Smart Recipes Search" />
         <DashCard route="/cookingguide" title="Cooking Assistant" />
       </div>
 
