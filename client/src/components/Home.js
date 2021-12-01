@@ -25,6 +25,7 @@ export default function Home(props) {
     useDatabase("sensor/data");
   const { classes } = useMaterialStyles();
 
+  console.log(gasVoltList);
   ////Control Area
   //Defines the size of the graph by splicing the input array. For ex. -50 indicates taking the latest 50 values
   const noOfPointsInGraph = -50;
@@ -73,6 +74,23 @@ export default function Home(props) {
     timeLabels.push(seconds);
   }
   //
+
+  const getLogTable = () => {
+    let t_items = [];
+    var i;
+
+    for (i = 1; i < 15; i++) {
+      t_items.push(
+        <tr>
+          <td>{gasVoltList[gasVoltList.length - i]}</td>
+          <td>{tempList[tempList.length - i]}</td>
+          <td>{humidity[humidity.length - i]}</td>
+        </tr>
+      );
+    }
+
+    return t_items;
+  };
 
   return (
     <Grid item xs={12} style={{ justifyContent: "space-evenly" }}>
@@ -245,6 +263,17 @@ export default function Home(props) {
             />
           </div>
         </Paper>
+        <br />
+        <table className="dataLog" style={{ backgroundColor: "beige", width: "720px", marginLeft: "auto", marginRight: "auto" }}>
+        <caption><h2>Live Logging</h2></caption>
+          <tr>
+            <th>Gas Volt (V)</th>
+            <th>Temperature (C)</th>
+            <th>Humidity</th>
+          </tr>
+          {getLogTable()}
+        </table>
+
       </div>
     </Grid>
   );

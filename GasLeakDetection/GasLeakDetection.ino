@@ -138,9 +138,9 @@ void updateHumidityTemp() {
 
     // Check if any reads failed and exit early (to try again).
     if (isnan(h) || isnan(t)) {
-        Serial.println(F("Failed to read from DHT sensor! Using sample values for h and t"));
-        h = 37;
-        t = 31;
+        // getting random sample for testing 
+        h = random(351,373)/10;
+        t = random(291,299)/10;
         float hic = dht.computeHeatIndex(t, h, false);
         postData += "temperature: " + String(t) + ",humidity: " + String(h) +
                     ",heatindex: " + String(hic);
