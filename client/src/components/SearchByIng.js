@@ -3,8 +3,6 @@ import RecipeCard from "./RecipeCard";
 import { motion } from "framer-motion";
 import Grid from "@material-ui/core/Grid";
 
-//TODO how to get recipe Source?
-
 export default function SearchByIng(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [ingred, setIngred] = useState([]);
